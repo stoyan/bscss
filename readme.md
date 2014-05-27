@@ -1,13 +1,14 @@
 This tool generates browser-specific CSS, stripping unsupported features.
 
-To figure out what's supported and what isn't, the tool uses input from:
- - caniuse.com
- - css-props library
- - random observations and heuristics
-
-Nice list, but these are all currently todos. The only two supported features are:
+Supported features are:
  - remove unused prefixed properties, e.g. if compiling for Firefox, remove the `-webkit-`s
  - keep `_` and `*` hacks in IE67, remove in all other browsers
+ - use cssprops library to strip unsupported properties
+
+More to come:
+ - caniuse.com data
+ - random observations and heuristics
+ - your input and contributions
 
 ## Why
 
@@ -42,7 +43,7 @@ The list of supported browsers is as follows:
 
 ```js
   var bs = require('bscss');
-  var css = 
+  var css =
     'a{color: red; _color: blue; -o-stuff: cool; -ms-filter: 1}';
   css = bs.transform(css, 'chrome');
 ```
