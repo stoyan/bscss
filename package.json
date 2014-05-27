@@ -1,0 +1,16 @@
+{
+  "name": "bscss",
+  "version": "0.0.1",
+  "description": "Browser-specific CSS",
+  "keywords": [
+    "css",
+    "transform",
+    "browser"
+  ],
+  "author": "Stoyan <ssttoo@ymail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stoyan/bscss.git"
+  },
+  "main": "index"
+}
