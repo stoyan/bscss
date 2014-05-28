@@ -12,5 +12,8 @@
     "type": "git",
     "url": "git://github.com/stoyan/bscss.git"
   },
-  "main": "index"
+  "main": "index",
+  "bin": {
+    "bscss": "./bin/cli.js"
+  }
 }
