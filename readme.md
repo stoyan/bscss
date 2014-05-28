@@ -4,6 +4,8 @@ Supported features are:
  - remove unused prefixed properties, e.g. if compiling for Firefox, remove the `-webkit-`s
  - keep `_` and `*` hacks in IE67, remove in all other browsers
  - use cssprops library to strip unsupported properties
+ - remove empty delimiters, like `;;` (result of stripping things)
+ - no media queries in IE < 9
 
 More to come:
  - caniuse.com data
