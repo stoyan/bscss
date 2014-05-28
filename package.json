@@ -1,6 +1,6 @@
 {
   "name": "bscss",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Browser-specific CSS",
   "keywords": [
     "css",
@@ -15,5 +15,9 @@
   "main": "index",
   "bin": {
     "bscss": "./bin/cli.js"
+  },
+  "dependencies": {
+    "cssprops": "*",
+    "gonzales-ast": "*"
   }
 }
