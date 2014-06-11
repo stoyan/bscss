@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BSCSS (Browser-Specific CSS) playarea</title>
+  <script src="bundle.js"></script>
+  <script src="prism.js"></script>
+  <link rel="stylesheet" href="prism.css">
+  <style>
+  body, textarea {
+    font: 16px Consolas, Monaco, 'Andale Mono', monospace;
+  }
+  .code {
+    width: 100%;
+    height: 250px;
+  }
+  pre {
+    margin: 0 !important;
+  }
+  </style>
+</head>
+<body>
+  <table width="100%" cellpadding="5"><tr valign="top"><td width="50%">
+    <textarea id="css" placeholder="feed me css"
+      class="code">a {-ms-color: red; _color: blue}</textarea>
+  </td><td>
+    <form id="browsers"></form>
+  </td></tr></table>
+  <div style="color: red" id="err"></div>
+  <pre><code class="language-css" id="result"></code></pre>
+  <p>This is a demo of <a href="https://github.com/stoyan/bscss">BSCSS</a>
+    (Browser-specific CSS)</p>
+
+  <script>
+  function update() {
+    var brows = '';
+    [].slice.call(document.getElementsByName('browser')).forEach(function(c) {
+      if (c.checked) {
+        brows = c.value;
+      }
+    })
+
+    err.innerHTML = '';
+    try {
+      var res = transform(css.value, brows);
+    } catch (e) {
+      err.innerHTML = "lolwtfbbq: " + e.message;
+    }
+
+    result.innerHTML = res;
+    Prism.highlightElement(result);
+  }
+
+  onload = function() {
+    css.focus();
+    browsers.innerHTML = getBrowswerOptions().join('<br>');
+    var me = whoami();
+    if (me) {
+      document.getElementById(me).checked = true;
+    } else {
+      document.getElementsByName('browser')[0].checked = true;
+    }
+    update();
+  };
+
+  browsers.onclick = css.oninput = update;
+  </script>
+</body>
+</html>

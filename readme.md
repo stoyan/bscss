@@ -55,3 +55,7 @@ This spits out only the `color: red`, the rest is stripped.
 `bs.transform(css, 'ie7');` for example will keep the `color:blue` too and remove the `-`-prefixed properties.
 In IE6 and IE7 the hack characters are removed, e.g. `_color` becomes `color`
 
+## Playground
+
+Available at http://bscss.csspatterns.com
+
