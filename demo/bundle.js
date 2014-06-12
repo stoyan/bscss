@@ -5800,11 +5800,11 @@ var browsers = {
     prefix: 'o'
   },
   ie6: {
-    hacks: ['_'],
+    hacks: ['_', '*'],
     nomq: true
   },
   ie7: {
-    hacks: ['*', '_'],
+    hacks: ['*'],
     nomq: true
   },
   ie8: {
