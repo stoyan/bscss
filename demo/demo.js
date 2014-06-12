@@ -1,4 +1,4 @@
-var bscss = require('../../bscss');
+var bscss = require('../index.js');
 
 getBrowswerOptions = function() {
   var opts = [];

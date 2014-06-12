@@ -5723,7 +5723,7 @@ function dummySpaces(num) {
 }
 
 },{"./cssp.translator.node.js":17,"./gonzales.cssp.node.js":18}],20:[function(require,module,exports){
-var bscss = require('../../bscss');
+var bscss = require('../index.js');
 
 getBrowswerOptions = function() {
   var opts = [];
@@ -5742,7 +5742,7 @@ transform = function(css, browser) {
 whoami = function() {
   return bscss.stringGetStringIdStringFromUserAgentSring(navigator.userAgent);
 }
-},{"../../bscss":21}],21:[function(require,module,exports){
+},{"../index.js":21}],21:[function(require,module,exports){
 module.exports = require('./lib/bs.js');
 
 
