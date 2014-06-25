@@ -3262,12 +3262,15 @@ exports.forward = require("./browsers/forward.js");
 
 },{"./browsers/chrome.js":1,"./browsers/firefox.js":2,"./browsers/forward.js":3,"./browsers/ie.js":4,"./browsers/ie10.js":5,"./browsers/ie11.js":6,"./browsers/ie6.js":7,"./browsers/ie7.js":8,"./browsers/ie8.js":9,"./browsers/ie9.js":10,"./browsers/ios.js":11,"./browsers/opera.js":12,"./browsers/safari.js":13}],15:[function(require,module,exports){
 var gonzales = require('gonzales');
+var traverse = require('./lib/traverse.js');
+var utils = require('./lib/utils.js');
 
 exports.parse = gonzales.srcToCSSP;
 exports.toCSS = gonzales.csspToSrc;
 exports.toTree = gonzales.csspToTree;
-exports.traverse = require('./lib/traverse.js');
-},{"./lib/traverse.js":16,"gonzales":19}],16:[function(require,module,exports){
+exports.traverse = traverse;
+exports.same = utils.same;
+},{"./lib/traverse.js":16,"./lib/utils.js":17,"gonzales":20}],16:[function(require,module,exports){
 function tree(node, visitor) {
   if (!Array.isArray(node)) {
     return node;
@@ -3297,6 +3300,11 @@ module.exports = function traverse (ast, visitors) {
 };
 
 },{}],17:[function(require,module,exports){
+exports.same = function same (ast1, ast2) {
+  return JSON.stringify(ast1) === JSON.stringify(ast2);
+};
+
+},{}],18:[function(require,module,exports){
 // version: 1.0.0
 
 function csspToSrc(tree, hasInfo) {
@@ -3400,7 +3408,7 @@ function csspToSrc(tree, hasInfo) {
 }
 exports.csspToSrc = csspToSrc;
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 var srcToCSSP = (function() {
 var TokenType = {
     StringSQ: 'StringSQ',
@@ -5697,7 +5705,7 @@ var getCSSPAST = (function() {
 }());
 exports.srcToCSSP = srcToCSSP;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 // CSSP
 
 exports.srcToCSSP = require('./gonzales.cssp.node.js').srcToCSSP;
@@ -5722,7 +5730,7 @@ function dummySpaces(num) {
     return '                                                  '.substr(0, num * 2);
 }
 
-},{"./cssp.translator.node.js":17,"./gonzales.cssp.node.js":18}],20:[function(require,module,exports){
+},{"./cssp.translator.node.js":18,"./gonzales.cssp.node.js":19}],21:[function(require,module,exports){
 var bscss = require('../index.js');
 
 getBrowswerOptions = function() {
@@ -5741,12 +5749,12 @@ transform = function(css, browser) {
 
 whoami = function() {
   return bscss.stringGetStringIdStringFromUserAgentSring(navigator.userAgent);
-}
-},{"../index.js":21}],21:[function(require,module,exports){
+};
+},{"../index.js":22}],22:[function(require,module,exports){
 module.exports = require('./lib/bs.js');
 
 
-},{"./lib/bs.js":22}],22:[function(require,module,exports){
+},{"./lib/bs.js":23}],23:[function(require,module,exports){
 // parser
 var gonzo = require('gonzales-ast');
 // properties
@@ -5794,7 +5802,7 @@ var browsers = {
     prefix: 'webkit'
   },
   firefox: {
-    prefix: 'webkit'
+    prefix: 'moz'
   },
   opera: {
     prefix: 'o'
@@ -5863,7 +5871,7 @@ exports.stringGetStringIdStringFromUserAgentSring = function(ua) {
   }
 };
 
-},{"./visitors/empty-delimiters.js":23,"./visitors/iehacks.js":24,"./visitors/media-queries.js":25,"./visitors/prefix.js":26,"./visitors/props.js":27,"cssprops":14,"gonzales-ast":15}],23:[function(require,module,exports){
+},{"./visitors/empty-delimiters.js":24,"./visitors/iehacks.js":25,"./visitors/media-queries.js":26,"./visitors/prefix.js":27,"./visitors/props.js":28,"cssprops":14,"gonzales-ast":15}],24:[function(require,module,exports){
 module.exports = {
 
   test: function(name, nodes) {
@@ -5896,7 +5904,7 @@ module.exports = {
 
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 // TODO: support \9 at the end of a value
 // requires gonzales fix
 // filed bug #9, oh sweet irony
@@ -5938,7 +5946,7 @@ module.exports = {
 
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 // @media screen, projection AND (color) {}
 /*
 ['stylesheet',
@@ -5983,7 +5991,7 @@ module.exports = {
   unsupported: ['AND', 'NOT', 'OR']
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = {
 
   test: function(name, nodes) {
@@ -6014,7 +6022,7 @@ module.exports = {
 
 };
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = {
 
   test: function(name, nodes) {
@@ -6042,4 +6050,4 @@ module.exports = {
 
 };
 
-},{}]},{},[20])
+},{}]},{},[21])

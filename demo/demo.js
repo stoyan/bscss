@@ -16,4 +16,4 @@ transform = function(css, browser) {
 
 whoami = function() {
   return bscss.stringGetStringIdStringFromUserAgentSring(navigator.userAgent);
-}
+};
